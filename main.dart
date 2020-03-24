@@ -7,7 +7,6 @@ import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/services.dart';
 import 'ManualEnter.dart';
 
-
 void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
