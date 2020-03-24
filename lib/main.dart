@@ -21,7 +21,7 @@ class CreateButton extends StatelessWidget{
       color: col,
       child: Center(
         child: Ink.image(
-          image: AssetImage('images/'+icon+'.png' ),
+          image: AssetImage('assets/'+icon+'.png' ),
           fit: BoxFit.scaleDown,
           width: 100.0,
           height: 75.0,
