@@ -10,66 +10,36 @@ class ManualEnter extends StatelessWidget{
   Widget build(BuildContext context) {
 
     return Stack(
-
-      children: <Widget>[
-
-        Image.asset(
-            "assets/boxm.png",
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.cover),
-
-
-
-       Scaffold(appBar: AppBar(
-        title: Text('Select Your Type'),
-        backgroundColor: Colors.green
-        
-      ),
-      backgroundColor: Image.asset('assets/glass.png').color,
-      body: Center(
-        child: GridView.count(crossAxisCount:3,
-        primary: false,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
-        padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
-        
-
-
         children: <Widget>[
-
-        
-            
-            
-          
-
-           Custombutton('http://www.google.com', 'recy1',Colors.amber,'Polyethylene Terephthalate','Soda Bottles \n Water Bottles \n Salad dressing bottles \n Salad dressing bottles \n Medicine jars \n Peanut butter jars \n Jelly jars \n Combs\n Bean bags \n Rope \n Tote bags \n Carpet\n Fiberfill material in winter clothing'),
-                                                                                                                                              
-           Custombutton('http://www.google.com', 'recy2',Colors.amber,'b',''),
-           Custombutton('http://www.google.com', 'recy3',Colors.amber,'c',''),
-           Custombutton('http://www.google.com', 'recy4',Colors.amber,'d',''),
-           Custombutton('http://www.google.com', 'recy5',Colors.amber,'e',''),
-           Custombutton('http://www.google.com', 'recy6',Colors.amber,'f',''),
-           Custombutton('http://www.google.com', 'recy7',Colors.amber,'g',''),
-           Custombutton('http://www.google.com', 'glass',Colors.amber,'h',''),
-           Custombutton('http://www.google.com', 'paper',Colors.amber,'i',''),
-           Custombutton('http://www.google.com', 'battery',Colors.amber,'j',''),
-           Custombutton('http://www.google.com', 'aluminum',Colors.amber,'k',''),
-           Custombutton('http://www.google.com', 'tuna',Colors.amber,'l',''),
-
-        ]
-        
-        ),
-
-
-
-      )
-      
-      ,)
-
-
+          Scaffold(appBar: AppBar(
+              title: Text('Select Your Type'),
+              backgroundColor: Colors.green
+          ),
+            backgroundColor: Image.asset('assets/glass.png').color,
+            body: Center(
+              child: GridView.count(crossAxisCount:3,
+              primary: false,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              padding: EdgeInsets.fromLTRB(10, 10, 10, 5),
+              children: <Widget>[
+                CreateButton('recy1', Colors.orangeAccent, 'http://www.google.com', 'Polyethylene Terephthalate','Soda Bottles \n Water Bottles \n Salad dressing bottles \n Salad dressing bottles \n Medicine jars \n Peanut butter jars \n Jelly jars \n Combs\n Bean bags \n Rope \n Tote bags \n Carpet\n Fiberfill material in winter clothing'),
+                CreateButton('recy2', Colors.lightGreenAccent, 'http://www.google.com', 'b',''),
+                CreateButton('recy3', Colors.redAccent,'http://www.google.com', 'c',''),
+                CreateButton('recy4', Colors.lightGreenAccent, 'http://www.google.com', 'd',''),
+                CreateButton('recy5', Colors.lightGreenAccent, 'http://www.google.com', 'e',''),
+                CreateButton('recy6', Colors.redAccent, 'http://www.google.com', 'f',''),
+                CreateButton('recy7', Colors.orangeAccent, 'http://www.google.com', 'g',''),
+                CreateButton('paper', Colors.lightGreenAccent,'http://www.google.com', 'i',''),
+                CreateButton('battery', Colors.redAccent, 'http://www.google.com', 'j',''),
+                CreateButton('aluminum', Colors.lightGreenAccent, 'http://www.google.com', 'k',''),
+                CreateButton('tuna', Colors.lightGreenAccent, 'http://www.google.com', 'l',''),
+                CreateButton('glass', Colors.lightGreenAccent, 'http://www.google.com', 'm',''),
+              ]
+            ),
+          )
+         ,)
       ]
-    
     );
   }
 
@@ -78,59 +48,44 @@ class ManualEnter extends StatelessWidget{
 }
 
 
-class Custombutton extends StatelessWidget {
+class CreateButton extends StatelessWidget{
+  final String icon;
+  final String link;
+  final Color col;
+  final String type;
+  final String info;
+  const CreateButton(this.icon, this.col, this.link, this.type, this.info);
 
- final String icon;
- final String link;
- final String type;
- final String info;
- 
- 
- final Color col;
- 
-  const Custombutton(this.link,this.icon,this.col,this.type,this.info);
-  
-  @override
+
   Widget build(BuildContext context) {
     return Material(
-    color: col,
+      shape: CircleBorder(),
+      color: col,
       child: Center(
-        child: FlatButton(
-                padding: EdgeInsets.all(0),
-                onPressed: null,
-                child: Ink.image(image: AssetImage('assets/'+icon+'.png'),
-                fit: BoxFit.fill,
-                width: 100,
-                height: 100,
-                padding: EdgeInsets.all(0),
-                child: InkWell(
-                  onTap: ()=> launch(link),
-                  onLongPress: ()=> showDialog(
-                    context: context,builder: (BuildContext context)=>PopupUI((type),(info))
-                    
-                  
-                  ),
-
-
-                )
-                  
-
-                  
-
-
-                ), 
-                )),
-
-
-      
+        child: Ink.image(
+          image: AssetImage('assets/'+icon+'.png' ),
+          fit: BoxFit.scaleDown,
+          width: 100.0,
+          height: 75.0,
+          child: InkWell(
+              onTap: () => launch(link),
+              onLongPress: ()=> showDialog(
+                  context: context,builder: (BuildContext context)=>PopupUI((type),(info))
+              ),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                /* child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  //child: Text('KITTEN', style: TextStyle(fontWeight: FontWeight.w900, color: Colors.white)),
+                ),   */
+              )
+          ),
+        ),
+      ),
     );
-
-
-
-    
-
   }
 }
+
 
 class PopupUI extends StatelessWidget{
 
